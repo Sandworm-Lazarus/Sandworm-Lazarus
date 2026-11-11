@@ -1,55 +1,39 @@
-<div align="center">
+<p>
+  <a href="https://sandworm-lazarus.pages.dev/"><img src="assets/hero.svg" width="100%" alt="Sandworm Lazarus — เรียนความปลอดภัยไซเบอร์ด้วยภาพ ทีละขั้น ตั้งแต่ศูนย์จนถึงระดับมืออาชีพ"></a>
+</p>
 
-<a href="https://sandworm-lazarus.pages.dev/">
-  <img src="https://sandworm-lazarus.pages.dev/assets/img/og.png" alt="Sandworm Lazarus — เรียนความปลอดภัยไซเบอร์ด้วยภาพ ทีละขั้น ตั้งแต่ศูนย์จนถึงระดับมืออาชีพ" width="100%">
-</a>
+<p align="center">
+  <a href="https://sandworm-lazarus.pages.dev/basics"><img src="assets/cta-start.svg" width="32%" alt="เริ่มแฟ้มแรก: CASE-001"></a>
+  <a href="https://sandworm-lazarus.pages.dev/paths"><img src="assets/cta-paths.svg" width="32%" alt="เลือกเส้นทางเรียน"></a>
+  <a href="https://sandworm-lazarus.pages.dev/library"><img src="assets/cta-library.svg" width="32%" alt="เปิดห้องสมุด"></a>
+</p>
 
-# Sandworm Lazarus
+<p>
+  <a href="https://sandworm-lazarus.pages.dev/library"><img src="assets/stats.svg" width="100%" alt="30 แฟ้มคดี · 11 ห้องทดลอง · 3 เส้นทางหลัก · 6 สายต่อยอด"></a>
+</p>
 
-**เรียนความปลอดภัยไซเบอร์ด้วยภาพ ทีละขั้น ตั้งแต่ศูนย์จนถึงระดับมืออาชีพ**
+<p align="center">
+  <img src="assets/h-paths.svg" width="100%" alt="01 เส้นทางเรียน"><br>
+  <a href="https://sandworm-lazarus.pages.dev/paths#safety"><img src="assets/path-safety.svg" width="32%" alt="เริ่มจากศูนย์: ปลอดภัยในชีวิตดิจิทัล · 6 ขั้น · ประมาณ 1.0 ชั่วโมง"></a>
+  <a href="https://sandworm-lazarus.pages.dev/paths#foundation"><img src="assets/path-foundation.svg" width="32%" alt="พื้นฐานเทคนิค: จากระบบสู่หลักฐาน · 12 ขั้น · ประมาณ 7.1 ชั่วโมง"></a>
+  <a href="https://sandworm-lazarus.pages.dev/paths#soc"><img src="assets/path-soc.svg" width="32%" alt="SOC: จาก alert สู่รายงานเหตุการณ์ · 14 ขั้น · ประมาณ 6.7 ชั่วโมง"></a>
+</p>
 
-[เปิดเว็บไซต์ →](https://sandworm-lazarus.pages.dev/)
+<p>
+  <img src="assets/h-tracks.svg" width="100%" alt="02 สายต่อยอด"><br>
+  <a href="https://sandworm-lazarus.pages.dev/paths"><img src="assets/tracks.svg" width="100%" alt="สายต่อยอด: AppSec, Cloud, DFIR, Detection, AI Security, OT Safety"></a>
+</p>
 
-</div>
+<p>
+  <img src="assets/h-labs.svg" width="100%" alt="03 ฝึกกับหลักฐาน"><br>
+  <a href="https://sandworm-lazarus.pages.dev/labs"><img src="assets/lab.svg" width="100%" alt="ห้องทดลอง: แล็บ 11 ชุด ฝึกกับหลักฐานจำลอง มีโจทย์ แนวตรวจคำตอบ และเกณฑ์ตรวจงาน"></a>
+</p>
 
----
+<p>
+  <img src="assets/h-projects.svg" width="100%" alt="04 โปรเจกต์"><br>
+  <a href="https://github.com/Sandworm-Lazarus/sandworm-arsenal"><img src="assets/arsenal.svg" width="100%" alt="sandworm-arsenal — คลังสกิล AI และความปลอดภัยไซเบอร์ คัดสรรพร้อมคำอธิบายภาษาไทย"></a>
+</p>
 
-## เกี่ยวกับที่นี่
-
-แฮกเกอร์ไม่ได้เจาะระบบในพริบตา ทุกการโจมตีคือวงจรหลายขั้น
-ที่นี่วาดวงจรนั้นออกมาให้เห็นทีละขั้น และชี้ว่าตัดมันได้ตรงไหน
-ภาพทุกภาพวาดจากโค้ด อ่านเข้าใจได้แม้ไม่มีพื้นฐาน
-
-## อ่านภาพยังไง
-
-ทุกภาพใช้สีชุดเดียวกัน จำครั้งเดียว อ่านได้ทุกบท
-
-| สี | ความหมาย |
-|---|---|
-| 🟥 แดง | ผู้โจมตี สิ่งที่คนร้ายหรือมัลแวร์ทำ |
-| 🟨 เหลือง | จุดเสี่ยง ช่องทางหรือจังหวะที่เราอาจพลาด |
-| 🟩 เขียว | การป้องกัน จุดที่วงจรถูกตัด |
-| 🟦 ฟ้า | ข้อมูลและเครื่องของเรา สิ่งที่กำลังปกป้อง |
-
-## มีอะไรให้เรียน
-
-| | |
-|---|---|
-| 📚 [ห้องสมุด](https://sandworm-lazarus.pages.dev/library) | แฟ้มคดี 30 แฟ้ม ไล่จากเรื่องที่ทุกคนควรรู้ ไปจนถึงงานของมืออาชีพ |
-| 🧭 [เส้นทางเรียน](https://sandworm-lazarus.pages.dev/paths) | เริ่มจากศูนย์ พื้นฐานเทคนิค SOC และสายต่อยอด เช่น AppSec, Cloud, DFIR, Detection, AI Security, OT Safety |
-| 🧪 [ห้องทดลอง](https://sandworm-lazarus.pages.dev/labs) | แล็บ 11 ชุด ฝึกกับหลักฐานจำลอง มีโจทย์ แนวตรวจคำตอบ และเกณฑ์ตรวจงาน |
-| 📰 [ข่าว AI](https://sandworm-lazarus.pages.dev/news) | ติดตามข่าวและเทียบความสามารถของโมเดล AI |
-
-## เริ่มตรงไหนดี
-
-- ไม่มีพื้นฐานเลย: [CASE-001 ความปลอดภัยไซเบอร์คืออะไร](https://sandworm-lazarus.pages.dev/basics)
-- อยากเรียนเป็นลำดับ: [เลือกเส้นทางเรียน](https://sandworm-lazarus.pages.dev/paths)
-- อยากลงมือเลย: [แล็บคัดกรองเหตุการณ์](https://sandworm-lazarus.pages.dev/lab-triage)
-
----
-
-<div align="center">
-
-ภาษาไทย · เนื้อหาเขียนโดยผู้เขียนนิรนาม
-
-</div>
+<p>
+  <a href="https://sandworm-lazarus.pages.dev/"><img src="assets/footer.svg" width="100%" alt="Sandworm Lazarus · ภาษาไทย · ผู้เขียนนิรนาม"></a>
+</p>
