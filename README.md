@@ -64,3 +64,21 @@ Authored offline implementations with documented inputs, synthetic examples and 
 
 These projects also curate upstream resources. [Original work and attribution](https://github.com/Sandworm-Lazarus/sandworm-arsenal/blob/main/ORIGINAL_WORK.md) explains authored components and retained upstream ownership. Synthetic fixture outcomes describe the tools' tested behavior, with model/provider benchmarks and hosted CI reported separately.
 
+## Engine workbenches
+
+Sandworm workers and report viewers built around upstream engines and APIs, with reviewed adapters, synthetic fixtures and explicit live/import/fixture modes. Each repository documents its validation scope and runtime requirements.
+
+| Repository | Sandworm work |
+| --- | --- |
+| [Docs Forge](https://github.com/Sandworm-Lazarus/sandworm-docs-forge) | Bounded local document conversion with MarkItDown, optional Docling adapter and source manifests |
+| [Secret Sentinel](https://github.com/Sandworm-Lazarus/sandworm-secret-sentinel) | Betterleaks adapter, secret-free triage reports and keyed location baselines |
+| [Dependency Radar](https://github.com/Sandworm-Lazarus/sandworm-dependency-radar) | OSV-Scanner adapter, dependency advisory reports and baseline changes |
+| [Workflow Guard](https://github.com/Sandworm-Lazarus/sandworm-workflow-guard) | Selected-file zizmor audits, offline execution and Thai remediation guidance |
+| [MCP Workbench](https://github.com/Sandworm-Lazarus/sandworm-mcp-workbench) | MCP Inspector contracts, synthetic server fixtures and snapshot comparisons |
+| [Change Radar](https://github.com/Sandworm-Lazarus/sandworm-change-radar) | Read-only changedetection.io API client, bounded snapshots and evidence diffs |
+| [Supply Chain Lens](https://github.com/Sandworm-Lazarus/sandworm-supply-chain-lens) | Syft/Grype adapters, SBOM inventory comparisons and vulnerability changes |
+| [Research Agent Kit](https://github.com/Sandworm-Lazarus/sandworm-research-agent-kit) | Pydantic AI typed extraction, source-bound evidence review and explicit unknowns |
+
+Existing tools also include a [Promptfoo API evaluation runner and comparison bridge](https://github.com/Sandworm-Lazarus/sandworm-thai-eval/tree/main/integrations/promptfoo), a [configurable offline Presidio Thai-pattern worker and report importer](https://github.com/Sandworm-Lazarus/sandworm-privacy-workbench/tree/main/integrations/presidio), and a [Langfuse trace, cost and evaluation explorer](https://github.com/Sandworm-Lazarus/sandworm-ai-run-ledger/tree/main/integrations/langfuse). Upstream attribution and licenses are retained; fixture and API-contract checks are distinguished from authenticated live-service tests.
+
+
