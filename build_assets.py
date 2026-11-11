@@ -297,15 +297,15 @@ def hero():
          f'<path d="{ch(0.5, 0.5, W - 1, H - 1, 20)}" stroke="{SOFT}"/>',
          f'<path d="M24 48V24H48M816 392V416H792" stroke="{WARN}" stroke-width="2"/>']
 
-    b.append(seq([("CASE FILE", INK3), ("  ·  ", INK3), ("30 แฟ้ม", THREAT),
-                  ("  ·  ", INK3), ("ภาษาไทย", INK3)], 48, 66, size=12, track=2.4)[0])
+    b.append(seq([("CASE LIBRARY", INK3), ("  ·  ", INK3), ("30 FILES", THREAT),
+                  ("  ·  ", INK3), ("THAI-LANGUAGE", INK3)], 48, 66, size=12, track=2.4)[0])
     b.append(t("Sandworm", 44, 140, INK, "display", 700, 68))
     laz = Text("Lazarus", "display", 700, 68).d(44, 208)
     b.append(f'<path d="{laz}" fill="{THREAT}"/>')
     b.append(f'<g clip-path="url(#band1)"><path class="gl g1" d="{laz}" fill="{DATA}"/></g>')
     b.append(f'<g clip-path="url(#band2)"><path class="gl g2" d="{laz}" fill="{THREAT_INK}"/></g>')
-    b.append(t("เรียนความปลอดภัยไซเบอร์ด้วยภาพ ทีละขั้น", 46, 252, INK2, "read", 400, 20))
-    b.append(t("ตั้งแต่ศูนย์จนถึงระดับมืออาชีพ", 46, 283, INK2, "read", 400, 20))
+    b.append(t("Cybersecurity, explained visually — step by step,", 46, 252, INK2, "read", 400, 20))
+    b.append(t("from absolute zero to professional practice.", 46, 283, INK2, "read", 400, 20))
 
     b.append(mark(704, 46, 92))
     stamp_txt, _ = text("CASE OPEN", 745, 231, THREAT, "display", 600, 18, track=3.4, anchor="middle")
@@ -314,7 +314,7 @@ def hero():
 
     # --- attack chain band
     b.append(f'<path d="M48 306H792" stroke="{SOFT}" stroke-dasharray="2 6"/>')
-    b.append(seq([("ATTACK CHAIN", INK3), ("  ·  ", INK3), ("ตัดวงจรได้ตรงไหน", INK3)],
+    b.append(seq([("ATTACK CHAIN", INK3), ("  ·  ", INK3), ("WHERE WE BREAK IT", INK3)],
                  48, 334, size=11, track=2)[0])
     live, lw = seq([("SIMULATION", INK3)], 792, 334, size=11, track=2, anchor="end")
     b.append(live + f'<circle class="live" cx="{n2(792 - lw - 12)}" cy="330" r="3.5" fill="{DATA}"/>')
@@ -325,22 +325,23 @@ def hero():
     b.append(f'<path class="flow" d="M384 {cy}H430" stroke="{THREAT}" stroke-width="2"/>')
     b.append(f'<path class="dflow" d="M588 {cy}H660" stroke="{DATA}" stroke-width="2" stroke-linecap="round"/>')
     b.append(f'<circle class="pk" cx="180" cy="{cy}" r="5" fill="{THREAT}" filter="url(#glow)"/>')
-    nodes = [("ผู้โจมตี", "ส่งลิงก์หลอก", THREAT_INK, THREAT),
-             ("จุดเสี่ยง", "ผ่านแชต", WARN, WARN),
-             ("การป้องกัน", "เราไม่กด", GUARD, GUARD),
-             ("ข้อมูลของเรา", "จึงปลอดภัย", DATA, DATA)]
+    nodes = [("Attacker", "sends a phishing link", THREAT_INK, THREAT),
+             ("Risk point", "arrives via chat", WARN, WARN),
+             ("Defense", "we don't click", GUARD, GUARD),
+             ("Our data", "stays safe", DATA, DATA)]
     for x, (label, sub, ink, col) in zip(xs, nodes):
         y = cy - bh / 2
         b.append(f'<path d="{ch(x, y, bw, bh, 9)}" fill="{BG}"/>')
         b.append(f'<path d="{ch(x, y, bw, bh, 9)}" fill="{col}" fill-opacity=".12" stroke="{col}" stroke-opacity=".85" stroke-width="1.5"/>')
         b.append(t(label, x + bw / 2, cy + 6, ink, "display", 600, 16, anchor="middle"))
-        b.append(t(sub, x + bw / 2, cy + 44, INK3, "mono", 400, 12, anchor="middle"))
+        b.append(t(sub, x + bw / 2, cy + 44, INK3, "mono", 400,
+                   fit(sub, bw + 40, "mono", 400, 12, 10.5), anchor="middle"))
     b.append(f'<path d="M438 {cy}H456" stroke="{GUARD}" stroke-width="2"/>')
     b.append(f'<path class="bar" d="M438 {cy - 16}V{cy + 16}" stroke="{GUARD}" stroke-width="3.5" '
              'stroke-linecap="round" filter="url(#glow)"/>')
     b.append(f'<circle class="rg" cx="438" cy="{cy}" r="16" stroke="{GUARD}" stroke-width="2"/>')
-    return doc(W, H, "Sandworm Lazarus — เรียนความปลอดภัยไซเบอร์ด้วยภาพ ทีละขั้น ตั้งแต่ศูนย์จนถึงระดับมืออาชีพ",
-               "".join(b), css, defs)
+    return doc(W, H, "Sandworm Lazarus — cybersecurity explained visually, step by step, "
+               "from absolute zero to professional practice", "".join(b), css, defs)
 
 
 # ------------------------------------------------------------------- CTA ---
@@ -368,8 +369,8 @@ def cta(label, color, primary=False):
 # ----------------------------------------------------------------- stats ---
 def stats():
     W, H = 840, 108
-    cells = [("CASE FILES", "30", "แฟ้มคดี", THREAT), ("LABS", "11", "ห้องทดลอง", GUARD),
-             ("PATHS", "3", "เส้นทางหลัก", DATA), ("TRACKS", "6", "สายต่อยอด", WARN)]
+    cells = [("LIBRARY", "30", "case files", THREAT), ("PRACTICE", "11", "hands-on labs", GUARD),
+             ("CURRICULUM", "3", "core paths", DATA), ("SPECIALIZE", "6", "expert tracks", WARN)]
     b = [panel(W, H, 14)]
     for i, (code, num, th, col) in enumerate(cells):
         x0 = i * 210
@@ -379,9 +380,10 @@ def stats():
              t(code, x0 + 44, 38, INK3, "mono", 600, 11, track=2)]
         numsvg, nw = text(num, x0 + 27, 86, col, "display", 700, 42)
         g.append(numsvg)
-        g.append(t(th, x0 + 27 + nw + 10, 83, INK2, "read", 500, 16))
+        avail = 210 - 27 - nw - 10 - 14
+        g.append(t(th, x0 + 27 + nw + 10, 83, INK2, "read", 500, fit(th, avail, "read", 500, 16, 13)))
         b.append(f'<g class="rise" style="animation-delay:{0.15 + i * 0.12:.2f}s">{"".join(g)}</g>')
-    return doc(W, H, "30 แฟ้มคดี · 11 ห้องทดลอง · 3 เส้นทางหลัก · 6 สายต่อยอด",
+    return doc(W, H, "30 case files · 11 hands-on labs · 3 core learning paths · 6 expert tracks",
                "".join(b), RISE_CSS)
 
 
@@ -414,10 +416,10 @@ def path_card(i, title, sub, steps, hours, col):
         x = 20 + k * (sw + gap)
         b.append(f'<rect class="seg" style="animation-delay:{k * 0.09:.2f}s" x="{n2(x)}" y="128" '
                  f'width="{n2(sw)}" height="6" rx="1" fill="{col}"/>')
-    b.append(t(f"{steps} ขั้น · ~{hours} ชม.", 20, 174, INK3, "mono", 400, 12))
-    go, gw = text("ดูเส้นทาง", 232, 174, col, "display", 600, 14, anchor="end")
+    b.append(t(f"{steps} steps · ~{hours} hrs", 20, 174, INK3, "mono", 400, 12))
+    go, gw = text("View path", 232, 174, col, "display", 600, 14, anchor="end")
     b.append(go + arrow(252, 169, col, 10, 1.8))
-    return doc(W, H, f"{title}: {sub} · {steps} ขั้น · ประมาณ {hours} ชั่วโมง", "".join(b), css)
+    return doc(W, H, f"{title}: {sub} · {steps} steps · about {hours} hours", "".join(b), css)
 
 
 # ---------------------------------------------------------------- tracks ---
@@ -446,12 +448,12 @@ def icon(kind, cx, cy, col):
 
 def tracks():
     W, H = 840, 196
-    items = [("AppSec", "จากแบบจำลองภัยสู่การตรวจโค้ด", "code", THREAT_INK),
-             ("Cloud", "ตรวจสิทธิ์ การตั้งค่า และแผนกู้คืน", "cloud", DATA),
-             ("DFIR", "หลักฐาน เวลา และการคัดกรองไฟล์", "lens", WARN),
-             ("Detection", "เขียนเงื่อนไขแล้วตรวจผล", "radar", GUARD),
-             ("AI Security", "คุมข้อมูลและสิทธิ์ของเอเจนต์", "chip", THREAT_INK),
-             ("OT Safety", "ประเมินผลต่อระบบจริงก่อนเปลี่ยนค่า", "gear", WARN)]
+    items = [("AppSec", "Threat modeling to code review", "code", THREAT_INK),
+             ("Cloud", "Access, configuration and recovery", "cloud", DATA),
+             ("DFIR", "Evidence, timelines and file triage", "lens", WARN),
+             ("Detection", "Write the rule, then verify it", "radar", GUARD),
+             ("AI Security", "Govern agent data and permissions", "chip", THREAT_INK),
+             ("OT Safety", "Assess live impact before changes", "gear", WARN)]
     cw, chh, gap, pad = (W - 40 - 24) / 3, 72, 12, 20
     b = [panel(W, H, 16)]
     for k, (name, desc, ic, col) in enumerate(items):
@@ -463,7 +465,7 @@ def tracks():
              t(name, x + 64, y + 32, INK, "display", 600, 17),
              t(desc, x + 64, y + 54, INK3, "read", 400, fit(desc, cw - 76, "read", 400, 13.5, 11.5))]
         b.append(f'<g class="rise" style="animation-delay:{0.1 + k * 0.08:.2f}s">{"".join(g)}</g>')
-    return doc(W, H, "สายต่อยอด: AppSec, Cloud, DFIR, Detection, AI Security, OT Safety",
+    return doc(W, H, "Expert tracks: AppSec, Cloud, DFIR, Detection, AI Security, OT Safety",
                "".join(b), RISE_CSS)
 
 
@@ -476,14 +478,14 @@ def lab():
          f'<path d="M0.5 44.5H839.5" stroke="{SOFT}"/>']
     for k, col in enumerate((THREAT, WARN, GUARD)):
         b.append(f'<path d="{ch(24 + k * 16, 17, 10, 10, 3)}" fill="{col}"/>')
-    b.append(seq([("HANDS-ON LAB", INK3), ("  ·  ", INK3), ("ห้องทดลอง", INK2)], 84, 27, size=11, track=2)[0])
+    b.append(seq([("HANDS-ON LAB", INK3), ("  ·  ", INK3), ("INCIDENT TRIAGE", INK2)], 84, 27, size=11, track=2)[0])
     b.append(seq([("11 LABS", GUARD), ("  ·  ", INK3), ("SIMULATED EVIDENCE", INK3)], 816, 27,
                  size=11, track=2, anchor="end")[0])
-    lines = [[("›", GUARD), ("  เปิดแล็บคัดกรองเหตุการณ์", INK)],
-             [("[ALERT]", WARN), ("     แยกเหตุผิดปกติออกจากสิ่งที่ยังสรุปไม่ได้", INK2)],
-             [("[EVIDENCE]", DATA), ("  อ้างแถวหลักฐานประกอบทุกข้อ", INK2)],
-             [("[REPORT]", GUARD), ("    timeline · หลักฐาน · แผนตอบสนอง · ข้อจำกัด", INK2)],
-             [("›", GUARD), ("  แล็บ 11 ชุด · ไฟล์จำลอง · โจทย์ · แนวตรวจคำตอบ · เกณฑ์ตรวจงาน", INK3)]]
+    lines = [[("›", GUARD), ("  open lab --triage", INK)],
+             [("[ALERT]", WARN), ("     separate anomalies from what cannot be concluded yet", INK2)],
+             [("[EVIDENCE]", DATA), ("  cite the evidence row behind every finding", INK2)],
+             [("[REPORT]", GUARD), ("    timeline · evidence · response plan · limitations", INK2)],
+             [("›", GUARD), ("  11 labs · simulated files · tasks · answer guides · rubrics", INK3)]]
     css = [".cur{animation:blink 1.1s steps(1,end) infinite}@keyframes blink{50%{opacity:0}}"]
     cycle = 14
     for i, parts in enumerate(lines):
@@ -501,7 +503,7 @@ def lab():
                    f"@keyframes t{i}{{0%,{t0}%{{transform:scaleX(1);animation-timing-function:steps({chars},end)}}"
                    f"{t1}%,93%{{transform:scaleX(0)}}97%,100%{{transform:scaleX(1)}}}}")
         b.append(f'<rect class="c{i}" x="24" y="{y - 21}" width="{n2(cover_w + 6)}" height="30" fill="{BG}"/>')
-    return doc(W, H, "ห้องทดลอง: แล็บ 11 ชุด ฝึกกับหลักฐานจำลอง มีโจทย์ แนวตรวจคำตอบ และเกณฑ์ตรวจงาน",
+    return doc(W, H, "Hands-on labs: 11 labs with simulated evidence, tasks, answer guides and grading rubrics",
                "".join(b), "".join(css), defs)
 
 
@@ -518,7 +520,10 @@ def arsenal():
          seq([("REPOSITORY", INK3), ("  ·  ", INK3), ("PUBLIC", GUARD), ("  ·  ", INK3), ("MIT LICENSE", INK3)],
              28, 38, size=11, track=2)[0],
          seq([("sandworm-", INK), ("arsenal", THREAT)], 28, 84, family="display", weight=700, size=32)[0],
-         t("คลังสกิล AI และความปลอดภัยไซเบอร์ คัดสรรพร้อมคำอธิบายภาษาไทย", 28, 114, INK2, "read", 400, 16),
+         t("A curated AI & cybersecurity skill arsenal — Thai + English guides, commit-pinned sources.",
+           28, 114, INK2, "read", 400,
+           fit("A curated AI & cybersecurity skill arsenal — Thai + English guides, commit-pinned sources.",
+               784, "read", 400, 16, 13)),
          t("57 skill entries  ·  19 collections  ·  3 evaluation tools", 28, 146, INK3, "mono", 400, 12)]
     x = 812
     for topic in reversed(["agent-skills", "appsec", "llm", "thai"]):
@@ -528,9 +533,9 @@ def arsenal():
         b.append(f'<path d="{ch(x, 22, cw, 22, 5)}" fill="{BG}" stroke="{LINE}"/>')
         b.append(t(topic, x + 9, 37, INK2, "mono", 400, 11))
         x -= 8
-    go, gw = text("เปิด repo", 788, 146, THREAT, "display", 600, 15, anchor="end")
+    go, gw = text("View repository", 788, 146, THREAT, "display", 600, 15, anchor="end")
     b.append(go + arrow(810, 141, THREAT, 11, 2))
-    return doc(W, H, "sandworm-arsenal — คลังสกิล AI และความปลอดภัยไซเบอร์ คัดสรรพร้อมคำอธิบายภาษาไทย",
+    return doc(W, H, "sandworm-arsenal — a curated AI and cybersecurity skill arsenal",
                "".join(b), "", defs)
 
 
@@ -539,10 +544,10 @@ def footer():
     W, H = 840, 76
     b = [panel(W, H, 12), mark(24, 20, 36),
          t("CASE OPEN", 76, 34, THREAT, "mono", 600, 11, track=2.4),
-         t("ภาษาไทย · ผู้เขียนนิรนาม · ทุกภาพวาดด้วยโค้ด", 76, 55, INK3, "mono", 400, 12)]
+         t("Thai-language library · anonymous author · every visual drawn in code", 76, 55, INK3, "mono", 400, 12)]
     url, uw = text("sandworm-lazarus.pages.dev", 790, 43, DATA, "mono", 600, 12, anchor="end")
     b.append(url + arrow(812, 39, DATA, 10, 1.8))
-    return doc(W, H, "Sandworm Lazarus · ภาษาไทย · ผู้เขียนนิรนาม", "".join(b), DRAW_CSS)
+    return doc(W, H, "Sandworm Lazarus · Thai-language library · anonymous author", "".join(b), DRAW_CSS)
 
 
 # ------------------------------------------------------------------ main ---
@@ -550,17 +555,17 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     files = {
         "hero.svg": hero(),
-        "cta-start.svg": cta("เริ่มแฟ้มแรก: CASE-001", THREAT, primary=True),
-        "cta-paths.svg": cta("เลือกเส้นทางเรียน", DATA),
-        "cta-library.svg": cta("เปิดห้องสมุด", GUARD),
+        "cta-start.svg": cta("Start with CASE-001", THREAT, primary=True),
+        "cta-paths.svg": cta("Choose a learning path", DATA),
+        "cta-library.svg": cta("Browse the library", GUARD),
         "stats.svg": stats(),
-        "h-paths.svg": section("01", "เส้นทางเรียน", "LEARNING PATHS"),
-        "h-tracks.svg": section("02", "สายต่อยอด", "SPECIALIST TRACKS"),
-        "h-labs.svg": section("03", "ฝึกกับหลักฐาน", "HANDS-ON LABS"),
-        "h-projects.svg": section("04", "โปรเจกต์", "PROJECTS"),
-        "path-safety.svg": path_card(1, "เริ่มจากศูนย์", "ปลอดภัยในชีวิตดิจิทัล", 6, "1.0", GUARD),
-        "path-foundation.svg": path_card(2, "พื้นฐานเทคนิค", "จากระบบสู่หลักฐาน", 12, "7.1", DATA),
-        "path-soc.svg": path_card(3, "SOC", "จาก alert สู่รายงานเหตุการณ์", 14, "6.7", THREAT),
+        "h-paths.svg": section("01", "Learning paths", "3 PATHS · 32 STEPS"),
+        "h-tracks.svg": section("02", "Expert tracks", "6 SPECIALIZATIONS"),
+        "h-labs.svg": section("03", "Hands-on labs", "LEARN BY EVIDENCE"),
+        "h-projects.svg": section("04", "Projects", "OPEN SOURCE"),
+        "path-safety.svg": path_card(1, "Start from zero", "Staying safe in digital life", 6, "1.0", GUARD),
+        "path-foundation.svg": path_card(2, "Tech foundations", "From systems to evidence", 12, "7.1", DATA),
+        "path-soc.svg": path_card(3, "SOC analyst", "From alert to incident report", 14, "6.7", THREAT),
         "tracks.svg": tracks(),
         "lab.svg": lab(),
         "arsenal.svg": arsenal(),
