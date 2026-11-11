@@ -47,3 +47,20 @@
 <p>
   <a href="https://sandworm-lazarus.pages.dev/"><img src="assets/footer.svg" width="100%" alt="Sandworm Lazarus · Thai-language library · anonymous author"></a>
 </p>
+
+
+## Original AI and security tools
+
+Authored offline implementations with documented inputs, synthetic examples and reproducible tests.
+
+| Repository | Original work |
+| --- | --- |
+| [Arsenal](https://github.com/Sandworm-Lazarus/sandworm-arsenal) | Catalog validation, generation, Privacy Guard and original-project verification |
+| [AI Toolbox](https://github.com/Sandworm-Lazarus/sandworm-ai-toolbox) | API workload cost calculator using explicitly supplied prices |
+| [Agent Skills](https://github.com/Sandworm-Lazarus/sandworm-agent-skills) | Tool Policy Gate with allow/deny, resource and expiry fixtures |
+| [Cyber Arsenal](https://github.com/Sandworm-Lazarus/sandworm-cyber-arsenal) | Synthetic Detection Lab and Privacy Guard |
+| [LLM Lab](https://github.com/Sandworm-Lazarus/sandworm-llm-lab) | Recorded answer, citation and abstention evaluator with Thai/English fixtures |
+| [Dev Playbooks](https://github.com/Sandworm-Lazarus/sandworm-dev-playbooks) | Evidence manifest and local artifact hash checker |
+
+These projects also curate upstream resources. [Original work and attribution](https://github.com/Sandworm-Lazarus/sandworm-arsenal/blob/main/ORIGINAL_WORK.md) explains authored components and retained upstream ownership. Synthetic fixture outcomes describe the tools' tested behavior, with model/provider benchmarks and hosted CI reported separately.
+
