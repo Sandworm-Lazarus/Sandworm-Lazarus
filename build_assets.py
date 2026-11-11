@@ -539,6 +539,93 @@ def arsenal():
                "".join(b), "", defs)
 
 
+# --------------------------------------------------------- operator file ---
+def operator():
+    """Author dossier. Every line is taken from the site's author and standards pages."""
+    W, H = 840, 380
+    px, py, pw, ph = 604, 66, 208, 172
+    defs = (f'<clipPath id="c"><path d="{ch(0, 0, W, H, 18)}"/></clipPath>'
+            f'<clipPath id="ph"><path d="{ch(px, py, pw, ph, 14)}"/></clipPath>'
+            '<pattern id="sl" width="4" height="4" patternUnits="userSpaceOnUse">'
+            f'<path d="M0 0.5H4" stroke="{SOFT}" stroke-width="1"/></pattern>'
+            f'<linearGradient id="sw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{GUARD}" stop-opacity="0"/>'
+            f'<stop offset=".5" stop-color="{GUARD}" stop-opacity=".16"/><stop offset="1" stop-color="{GUARD}" stop-opacity="0"/></linearGradient>'
+            f'<linearGradient id="rd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{INK3}"/>'
+            f'<stop offset=".5" stop-color="{INK2}"/><stop offset="1" stop-color="{INK3}"/></linearGradient>')
+    css = (DRAW_CSS +
+           ".sweep{animation:sweep 4.5s linear infinite}@keyframes sweep{to{transform:translateY(260px)}}"
+           ".stamp{transform-box:fill-box;transform-origin:center;animation:stamp .5s cubic-bezier(.2,1.6,.4,1) .8s both}"
+           "@keyframes stamp{from{opacity:0;transform:scale(1.4)}to{opacity:1;transform:none}}"
+           ".redact{animation:redact 3s ease-in-out infinite}@keyframes redact{50%{opacity:.55}}")
+    b = [panel(W, H, 18),
+         f'<g clip-path="url(#c)"><rect width="{W}" height="44" fill="{RAISE}"/></g>',
+         f'<path d="M0.5 44.5H839.5" stroke="{SOFT}"/>',
+         seq([("OPERATOR FILE", INK3), ("  ·  ", INK3), ("CALLSIGN: SANDWORM", THREAT)], 28, 27, size=11, track=2)[0]]
+    wh, ww = seq([("WITHHELD", INK3)], 812, 27, size=11, track=2, anchor="end")
+    lab_, lw = seq([("IDENTITY:", INK3)], 812 - ww - 86, 27, size=11, track=2, anchor="end")
+    b += [wh, lab_, f'<rect class="redact" x="{n2(812 - ww - 78)}" y="17" width="68" height="13" fill="url(#rd)"/>']
+
+    # left column: callsign, tagline, manifesto (site's own words, translated)
+    b.append(t("SANDWORM", 26, 104, INK, "display", 700, 50, track=1.5))
+    b.append(t("Identity withheld. Every step of the attack, disclosed.", 28, 136, THREAT_INK, "display", 600, 18))
+    manifesto = ["Every attack is a story with an order — a starting point, forks,",
+                 "and a moment where someone can stop it. So every chain gets drawn,",
+                 "step by step, in code: from a phishing link in a chat to",
+                 "nation-state operations and AI-era threats."]
+    for k, line in enumerate(manifesto):
+        b.append(t(line, 28, 172 + k * 22, INK2, "read", 400, fit(line, 556, "read", 400, 15.5, 13)))
+
+    # right column: redacted photo + stamp
+    b += [f'<path d="{ch(px, py, pw, ph, 14)}" fill="{BG}"/>',
+          f'<g clip-path="url(#ph)"><rect x="{px}" y="{py}" width="{pw}" height="{ph}" fill="url(#sl)"/>',
+          f'<rect class="sweep" x="{px}" y="{py - 80}" width="{pw}" height="80" fill="url(#sw)"/></g>',
+          f'<path d="{ch(px, py, pw, ph, 14)}" stroke="{LINE}"/>',
+          mark(px + pw / 2 - 40, py + 34, 80),
+          t("PHOTO · REDACTED", px + pw / 2, py + ph + 22, INK3, "mono", 600, 10.5, track=2, anchor="middle")]
+    stamp_txt = t("IDENTITY WITHHELD", 0, 0, THREAT, "display", 600, 14, track=2.6, anchor="middle")
+    b.append(f'<g transform="translate({px + pw / 2} {py + ph - 22}) rotate(-8)"><g class="stamp">'
+             f'<rect x="-92" y="-19" width="184" height="30" fill="{BG}" fill-opacity=".85" stroke="{THREAT}" stroke-width="2"/>'
+             f'<g transform="translate(0 2)">{stamp_txt}</g></g></g>')
+
+    # dossier fields
+    b.append(f'<path d="M28 268H812" stroke="{SOFT}" stroke-dasharray="2 6"/>')
+    fields = [("MISSION", "Everyone sees the attack coming — and knows where to cut the chain", INK),
+              ("DOCTRINE", "Defense only · sourced facts, never invented · every visual drawn in code", INK),
+              ("RECORD", "144 certificates from 7 issuers — all issued to “Sandworm Lazarus”", INK),
+              ("ISSUERS", "Fortinet · Cisco Networking Academy · AttackIQ · APIsec University · IBM SkillsBuild", INK2)]
+    for k, (key, val, col) in enumerate(fields):
+        y = 296 + k * 22
+        b.append(t(key, 28, y, INK3, "mono", 600, 11, track=2))
+        b.append(t(val, 136, y, col, "mono", 400, fit(val, 676, "mono", 400, 12.5, 10.5)))
+    return doc(W, H, "Operator file — callsign Sandworm, identity withheld. Every step of the attack, disclosed.",
+               "".join(b), css, defs)
+
+
+# -------------------------------------------------------------- doctrine ---
+def doctrine():
+    W, H = 840, 236
+    rules = [("R-01", "Defense only", ("No working exploits, payloads or", "evasion. Every threat ends in a fix."), THREAT_INK),
+             ("R-02", "Sourced, never invented", ("No made-up numbers. If it can't", "be verified, it doesn't ship."), WARN),
+             ("R-03", "Dated", ("Cyber knowledge ages fast —", "every story carries its date."), DATA),
+             ("R-04", "Drawn in code", ("No stock art, no AI images. Every", "diagram is rendered from code."), GUARD),
+             ("R-05", "Zero tracking", ("No accounts, no ads, no third-party", "scripts. Progress stays on device."), DATA),
+             ("R-06", "Practice what we teach", ("CSP + Trusted Types, HTTPS only.", "Mozilla Observatory A+ (Nov 2026)."), GUARD)]
+    cw, chh, gap, pad = (W - 40 - 24) / 3, 92, 12, 20
+    b = [panel(W, H, 16)]
+    for k, (code, title, desc, col) in enumerate(rules):
+        x = pad + (k % 3) * (cw + gap)
+        y = pad + (k // 3) * (chh + gap)
+        g = [f'<path d="{ch(x, y, cw, chh, 10)}" fill="{RAISE}" stroke="{SOFT}"/>',
+             f'<path d="M{n2(x)} {n2(y + 14)}V{n2(y + chh - 14)}" stroke="{col}" stroke-width="2"/>',
+             t(code, x + 18, y + 26, col, "mono", 600, 11, track=1.5),
+             t(title, x + 18, y + 48, INK, "display", 600, fit(title, cw - 30, "display", 600, 16, 13))]
+        for j, line in enumerate(desc):
+            g.append(t(line, x + 18, y + 67 + j * 16, INK3, "read", 400, fit(line, cw - 30, "read", 400, 12.5, 10.5)))
+        b.append(f'<g class="rise" style="animation-delay:{0.1 + k * 0.08:.2f}s">{"".join(g)}</g>')
+    return doc(W, H, "Rules of engagement: defense only, sourced facts, dated, drawn in code, zero tracking, "
+               "practice what we teach", "".join(b), RISE_CSS)
+
+
 # ---------------------------------------------------------------- footer ---
 def footer():
     W, H = 840, 76
@@ -559,10 +646,14 @@ def main():
         "cta-paths.svg": cta("Choose a learning path", DATA),
         "cta-library.svg": cta("Browse the library", GUARD),
         "stats.svg": stats(),
-        "h-paths.svg": section("01", "Learning paths", "3 PATHS · 32 STEPS"),
-        "h-tracks.svg": section("02", "Expert tracks", "6 SPECIALIZATIONS"),
-        "h-labs.svg": section("03", "Hands-on labs", "LEARN BY EVIDENCE"),
-        "h-projects.svg": section("04", "Projects", "OPEN SOURCE"),
+        "h-operator.svg": section("01", "Operator file", "IDENTITY WITHHELD"),
+        "operator.svg": operator(),
+        "h-doctrine.svg": section("02", "Rules of engagement", "DOCTRINE"),
+        "doctrine.svg": doctrine(),
+        "h-paths.svg": section("03", "Learning paths", "3 PATHS · 32 STEPS"),
+        "h-tracks.svg": section("04", "Expert tracks", "6 SPECIALIZATIONS"),
+        "h-labs.svg": section("05", "Hands-on labs", "LEARN BY EVIDENCE"),
+        "h-projects.svg": section("06", "Projects", "OPEN SOURCE"),
         "path-safety.svg": path_card(1, "Start from zero", "Staying safe in digital life", 6, "1.0", GUARD),
         "path-foundation.svg": path_card(2, "Tech foundations", "From systems to evidence", 12, "7.1", DATA),
         "path-soc.svg": path_card(3, "SOC analyst", "From alert to incident report", 14, "6.7", THREAT),
